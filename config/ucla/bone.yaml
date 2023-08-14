@@ -1,0 +1,50 @@
+# feeder
+feeder: feeders.feeder_ucla.Feeder
+train_feeder_args:
+  data_path: bone
+  label_path: train
+  debug: False
+  random_choose: True
+  random_shift: False
+  random_move: False
+  window_size: 52
+  normalization: False
+  repeat: 5
+#curl
+test_feeder_args:
+  data_path: bone
+  label_path: val
+  debug: False
+
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 10
+  num_point: 20
+  num_person: 1
+  graph: graph.ucla.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+  beta_1: 1e-3
+  beta_T: 0.02
+  T: 100
+  diffusion_types: 'y_g_noise'
+  use_vaetricks: None
+  use_mask: False
+  num_set: 3
+
+#optim
+weight_decay: 0.0001
+base_lr: 0.01
+lr_decay_rate: 0.1
+step: [100]
+
+# training
+device: [0,1,2,3]
+batch_size: 32
+test_batch_size: 32
+num_epoch: 110
+nesterov: True
+warm_up_epoch: 5
+num_class: 10
