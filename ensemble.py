@@ -61,17 +61,17 @@ if __name__ == "__main__":
         r2 = list(pickle.load(r2).items())
 
     if arg.joint_motion_dir is not None:
-        with open(os.path.join(arg.joint_motion_dir, 'epoch1_test_score.pkl'), 'rb') as r3:  # _motion
+        with open(os.path.join(arg.joint_motion_dir, 'epoch1_test_score.pkl'), 'rb') as r3:  
             r3 = list(pickle.load(r3).items())
     if arg.bone_motion_dir is not None:
-        with open(os.path.join(arg.bone_motion_dir, 'epoch1_test_score.pkl'), 'rb') as r4:  # bone_motion
+        with open(os.path.join(arg.bone_motion_dir, 'epoch1_test_score.pkl'), 'rb') as r4:  
             r4 = list(pickle.load(r4).items())
 
     if arg.joint_curl_dir is not None:
-        with open(os.path.join(arg.joint_curl_dir, 'epoch1_test_score.pkl'), 'rb') as r5:  # joint_acc
+        with open(os.path.join(arg.joint_curl_dir, 'epoch1_test_score.pkl'), 'rb') as r5: 
             r5 = list(pickle.load(r5).items())
     if arg.bone_curl_dir is not None:
-        with open(os.path.join(arg.bone_curl_dir, 'epoch1_test_score.pkl'), 'rb') as r6:  # bone_acc
+        with open(os.path.join(arg.bone_curl_dir, 'epoch1_test_score.pkl'), 'rb') as r6:  
             r6 = list(pickle.load(r6).items())
 
     right_num = total_num = right_num_5 = 0
