@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     if arg.joint_motion_dir is not None and arg.bone_motion_dir is not None and arg.joint_curl_dir is None and arg.bone_curl_dir is None:
         print('********************************')
-        arg.alpha = [1.95, 2.5, 0.95, 0.55]
+        arg.alpha = [1, 1, 1, 1]
         for i in tqdm(range(len(label))):
             l = label[i]
             _, r11 = r1[i]
@@ -95,8 +95,8 @@ if __name__ == "__main__":
         acc5 = right_num_5 / total_num
     elif arg.joint_motion_dir is not None and arg.bone_motion_dir is not None and arg.joint_curl_dir is not None and arg.bone_curl_dir is not None:
         print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-        arg.alpha = [4.5, 4.3, 1.94, 0.53,
-                     3.28, 1.66]
+        arg.alpha = [1, 1, 1, 1,
+                     1, 1]
         for i in tqdm(range(len(label))):
             l = label[i]
             _, r11 = r1[i]
