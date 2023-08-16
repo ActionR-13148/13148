@@ -19,20 +19,20 @@ class LabelSmoothingCrossEntropy(nn.Module):
         return loss.mean()
 
 def pairwise_distances(x):
-    # x should be two dimensional
     instances_norm = torch.sum(x ** 2, -1).reshape((-1, 1))
     return -2 * torch.mm(x, x.t()) + instances_norm + instances_norm.t()
 
-
-def GaussianKernelMatrix(x, sigma=1):
+def GaussianKernelMatrix(x, alpha, ell):
     pairwise_distances_ = pairwise_distances(x)
-    return torch.exp(-pairwise_distances_ / sigma)
+    r = torch.sqrt(pairwise_distances_)
+    kernel_matrix = alpha * (1 + torch.sqrt(3) * r / ell) * torch.exp(-torch.sqrt(3) * r / ell)
+    return kernel_matrix
 
 
 def HSIC(x, y, s_x=1, s_y=1):
     m, _ = x.shape  # batch size
-    K = GaussianKernelMatrix(x, s_x)
-    L = GaussianKernelMatrix(y, s_y)
+    K = GaussianKernelMatrix(x, s_x, 1)
+    L = GaussianKernelMatrix(y, s_y, 1)
     H = torch.eye(m) - 1.0 / m * torch.ones((m, m))
     H = H.float().cuda()
     HSIC = torch.trace(torch.mm(L, torch.mm(H, torch.mm(K, H)))) / ((m - 1) ** 2)
