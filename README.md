@@ -73,10 +73,10 @@ Put downloaded data into the following directory structure:
 ### Training
 
 
-- To train model on NTU RGB+D 60/120 with bone or motion modalities, setting `bone` arguments in the config file `default.yaml` or in the command line.
+- To train model on NTU RGB+D 60/120 with bone stream, setting `bone` arguments in the config file `default.yaml` or in the command line.
 
 ```
-# Example: training on NTU RGB+D 120 cross subject under bone modality
+# Example: training on NTU RGB+D 120 cross subject under bone stream
 python main.py --config config/nturgbd120-cross-subject/default.yaml --train_feeder_args bone=True --test_feeder_args bone=True --work-dir work_dir/ntu120/csub/gcn_bone --device 0
 ```
 
@@ -94,7 +94,7 @@ python main.py --config config/ucla/default.yaml --work-dir work_dir/ucla/gcn_xx
 python main.py --config <work_dir>/config.yaml --work-dir <work_dir> --phase test --save-score True --weights <work_dir>/xxx.pt --device 0
 ```
 
-- To ensemble the results of different modalities, run 
+- To ensemble the results of different streams, run 
 ```
 # Example: ensemble six streams of GCN on NTU RGB+D cross subject
 python ensemble.py --dataset ntu/csub --joint-dir work_dir/ntu/csub/joint ... --joint-curl-dir work_dir/ntu/csub/distant ...
