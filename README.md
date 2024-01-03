@@ -80,7 +80,7 @@ Put downloaded data into the following directory structure:
 python main.py --config config/nturgbd120-cross-subject/default.yaml --train_feeder_args bone=True --test_feeder_args bone=True --work-dir work_dir/ntu120/csub/gcn_bone --device 0
 ```
 
-- To train model on NW-UCLA with others modalities, you need to modify `data_path` in `train_feeder_args` and `test_feeder_args` to "bone" or "motion" or "bone motion", and run
+- To train model on NW-UCLA with others modalities, you need to modify `data_path` in `train_feeder_args` and `test_feeder_args` to "bone", and run
 
 ```
 python main.py --config config/ucla/default.yaml --work-dir work_dir/ucla/gcn_xxx --device 0
